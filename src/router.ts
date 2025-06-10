@@ -1,16 +1,14 @@
 import { Router } from 'express';
+import { listCategories } from './app/useCases/categories/listCategories';
+import { createCategories } from './app/useCases/categories/createCategory';
 
 export const router = Router();
 
 //List categories
-router.get('/categories', (req, res) => {
-  res.send('OK');
-});
+router.get('/categories', listCategories);
 
 //Create category
-router.post('/categories', (req, res) => {
-  res.send('OK');
-});
+router.post('/categories', createCategories);
 
 //List products
 router.get('/products', (req, res) => {
@@ -42,7 +40,7 @@ router.post('/orders', (req, res) => {
   res.send('OK');
 });
   // Delete/cancel order
-  router.delete('/orders', (req, res) => {
+  router.delete('/orders/:orderId', (req, res) => {
     res.send('OK');
 });
 
